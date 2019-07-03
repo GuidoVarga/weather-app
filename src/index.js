@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose} from 'redux'
 import * as serviceWorker from './serviceWorker';
 import Root from './routes/index';
 import AppReducer from './reducers/index';
 import App from './App';
+import createSagaMiddleware from 'redux-saga';
+import citiesSaga from './sagas/citiesSaga';
 
-let store = createStore(AppReducer);
+//let store = createStore(AppReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(AppReducer, /* preloadedState, */ composeEnhancers(applyMiddleware(sagaMiddleware)));
+sagaMiddleware.run(citiesSaga);
 
 ReactDOM.render(
       <Root store={store}/>,

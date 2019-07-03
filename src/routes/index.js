@@ -7,12 +7,13 @@ import MapView from '../views/MapView';
 
 const Root = ({store}) => {
     return (
-    <Provider store={store}>
-        <Router>
-            <Route path="/" component={Home}/>
-            <Route path="map" component={MapView}/>
-        </Router>
-    </Provider>);
+        <Provider store={store}>
+            <Router>
+                <Route path="/" component={Home}/>
+                <Route path="map" component={MapView}/>
+            </Router>
+        </Provider>
+    );
 }
   
 export default Root;

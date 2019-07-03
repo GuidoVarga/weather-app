@@ -24,6 +24,10 @@
 
 }
 
+html {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .root {
     &-view {
         background: lightgray;
@@ -33,7 +37,7 @@
     &-container {
         background: white;
         height: 70%;
-        margin: 0 14% 36px;
+        margin: 0 10% 36px;
         width: auto;
     }
 }

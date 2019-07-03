@@ -1,0 +1,8 @@
+const actionTypes = {
+    "GET_CITY_REQUEST": "GET_CITY_REQUEST",
+    "GET_CITY_FAILURE": "GET_CITY_FAILURE",
+    "GET_CITY_SUCCESS": "GET_CITY_SUCCESS",
+    "SET_SEARCH_CITY": "SET_SEARCH_CITY",
+    "SET_SEARCH_COUNTRY": "SET_SEARCH_COUNTRY"
+}
+export default actionTypes;
