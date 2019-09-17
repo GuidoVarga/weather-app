@@ -3,14 +3,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
-import citiesActions from '../actions/citiesActions';
+import * as citiesActions from '../actions/citiesActions';
 import '../App.scss';
 
 class Home extends React.Component {
 
     componentDidMount(){
-        const { citiesActions } = this.props;
-        citiesActions.getCityRequest();
+        const { getCityRequest } = this.props;
+        //getCityRequest();
     }
     
     render() {
@@ -28,11 +28,10 @@ class Home extends React.Component {
         )
     }
 }
-const mapDispatchToProps = (dispatch) => ({
-    citiesActions: bindActionCreators(citiesActions, dispatch)
-})
-  
+
 export default connect(
    null,
-   mapDispatchToProps,
+    {
+      getCityRequest: citiesActions.getCityRequest
+    }
 )(Home)

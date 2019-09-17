@@ -1,26 +1,26 @@
 import actionTypes from '../constants/actionTypes';
 
-const citiesActions = {
-    getCityRequest(data = null) {
-        return {
-            type: actionTypes.GET_CITY_REQUEST,
-            payload: data
-        }
-    },
-    
-    getCitySuccess(data) {
-        return {
-            type: actionTypes.GET_CITY_SUCCESS,
-            payload: data
-        }
-    },
-    
-    getCityFailure(data) {
-        return {
-            type: actionTypes.GET_CITY_FAILURE,
-            payload: data
-        }
-    },
-}
-export default citiesActions;
+const getCityRequest = (city = '', country = '') => ({
+    type: actionTypes.GET_CITY_REQUEST,
+    payload: {
+      city,
+      country
+    }
+});
+
+const getCitySuccess = (data) => ({
+    type: actionTypes.GET_CITY_SUCCESS,
+    payload: data
+});
+
+const getCityFailure = (data) => ({
+    type: actionTypes.GET_CITY_FAILURE,
+    payload: data
+});
+
+export {
+  getCityFailure,
+  getCityRequest,
+  getCitySuccess
+};
 

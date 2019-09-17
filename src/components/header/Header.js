@@ -2,8 +2,8 @@ import React from "react";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
-import citiesActions from '../../actions/citiesActions';
-import { setSearchCity, setSearchCountry } from '../../actions/searchActions';
+import * as citiesActions from '../../actions/citiesActions';
+import * as searchActions from '../../actions/searchActions';
 import { APP_TITLE, HOME, MAPS, SEARCH_CITY_PH, SEARCH_LABEL, SEARCH_COUNTRY_PH} from "../../constants/texts";
 import './header.scss';
 
@@ -11,21 +11,22 @@ class Header extends React.Component {
 
     handleOnChangeCountry = (evt) => {
         const { target : { value } } = evt;
-        const { searchCountry } = this.props;
-        console.log(value);
-        searchCountry(value);
+        const { setSearchCountry } = this.props;
+
+        setSearchCountry(value);
     }
 
     handleOnChangeCity = (evt) => {
         const { target : { value } } = evt;
-        const { searchCity } = this.props;
-        searchCity(value);
+        const { setSearchCity } = this.props;
+        setSearchCity(value);
     }
 
     handleOnClickSearch = () => {
-        const { searchReducer, citiesActions } = this.props;
-        const city = searchReducer.searchText;
-        citiesActions.getCityRequest({city});
+        const { searchState, getCityRequest } = this.props;
+        const city = searchState.city;
+        const country = searchState.country;
+        getCityRequest(city, country);
     }
 
     render() {
@@ -43,33 +44,28 @@ class Header extends React.Component {
                             </ul>
                         </div>
                         <div className="header__bar-container__search-bar__container">
-                                <label className="header__bar-container__search-bar__city-label">Country:</label>
-                                <input type="text" placeholder={SEARCH_COUNTRY_PH}  className="header__bar-container__search-bar__input input-text-default" onChange={this.handleOnChangeCountry}/>
-                                <label className="header__bar-container__search-bar__city-label">City:</label>
-                                <input type="text" placeholder={SEARCH_CITY_PH}  className="header__bar-container__search-bar__input input-text-default" onChange={this.handleOnChangeCity}/>
-                                <button className="search-button" onClick={this.handleOnClickSearch}>{SEARCH_LABEL}</button>
+                            <label className="header__bar-container__search-bar__city-label">Country:</label>
+                            <input type="text" placeholder={SEARCH_COUNTRY_PH}  className="header__bar-container__search-bar__input input-text-default" onChange={this.handleOnChangeCountry}/>
+                            <label className="header__bar-container__search-bar__city-label">City:</label>
+                            <input type="text" placeholder={SEARCH_CITY_PH}  className="header__bar-container__search-bar__input input-text-default" onChange={this.handleOnChangeCity}/>
+                            <button className="search-button" onClick={this.handleOnClickSearch}>{SEARCH_LABEL}</button>
                         </div>
                     </div>
                 </div>
             </nav>
         );
-    } 
+    }
 }
 
 const mapStateToProps = (state) => ({
-    searchReducer: state.searchReducer
+    searchState: state.searchReducer
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    //citiesActions: bindActionCreators(citiesActions, dispatch),
-    searchCity: setSearchCity,
-    searchCountry: setSearchCountry
-})
-  
 export default connect(
     mapStateToProps,
    {
-    searchCity: setSearchCity,
-    searchCountry: setSearchCountry
+      getCityRequest: citiesActions.getCityRequest,
+      setSearchCity: searchActions.setSearchCity,
+      setSearchCountry: searchActions.setSearchCountry
    }
 )(Header)

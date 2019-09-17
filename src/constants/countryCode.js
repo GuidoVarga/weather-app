@@ -911,7 +911,7 @@ const countryCode = [{
 },
 {
     "name": "United Kingdom",
-    "code": "GB"
+    "code": "UK"
 },
 {
     "name": "United States",
