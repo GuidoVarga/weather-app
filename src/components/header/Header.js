@@ -1,10 +1,10 @@
 import React from "react";
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import * as citiesActions from '../../actions/citiesActions';
 import * as searchActions from '../../actions/searchActions';
 import { APP_TITLE, HOME, MAPS, SEARCH_CITY_PH, SEARCH_LABEL, SEARCH_COUNTRY_PH} from "../../constants/texts";
+import CustomInput from '../customInput/customInput';
 import './header.scss';
 
 class Header extends React.Component {
@@ -45,9 +45,9 @@ class Header extends React.Component {
                         </div>
                         <div className="header__bar-container__search-bar__container">
                             <label className="header__bar-container__search-bar__city-label">Country:</label>
-                            <input type="text" placeholder={SEARCH_COUNTRY_PH}  className="header__bar-container__search-bar__input input-text-default" onChange={this.handleOnChangeCountry}/>
+                            <CustomInput type="text" placeholder={SEARCH_COUNTRY_PH}  className="header__bar-container__search-bar__input" onChange={this.handleOnChangeCountry}/>
                             <label className="header__bar-container__search-bar__city-label">City:</label>
-                            <input type="text" placeholder={SEARCH_CITY_PH}  className="header__bar-container__search-bar__input input-text-default" onChange={this.handleOnChangeCity}/>
+                            <CustomInput type="text" placeholder={SEARCH_CITY_PH}  className="header__bar-container__search-bar__input" onChange={this.handleOnChangeCity}/>
                             <button className="search-button" onClick={this.handleOnClickSearch}>{SEARCH_LABEL}</button>
                         </div>
                     </div>
