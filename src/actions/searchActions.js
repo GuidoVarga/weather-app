@@ -1,20 +1,21 @@
 import actionTypes from '../constants/actionTypes';
 
-
-const searchActions = {
-    setSearchCountry(data = '') {
+const setSearchCountry = (data = '')=>{
         console.log(data);
-        return {
+        return ({
             type: actionTypes.SET_SEARCH_COUNTRY,
             payload: data
-        }
-    },
+        })
+}
 
-    setSearchCity(data = '') {
-        return {
+const setSearchCity = (data = '') => {
+        return ({
             type: actionTypes.SET_SEARCH_CITY,
             payload: data
-        }
-    },
+        });
 }
-export default searchActions;
+
+export {
+    setSearchCity,
+    setSearchCountry
+}

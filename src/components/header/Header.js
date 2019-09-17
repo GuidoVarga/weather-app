@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import citiesActions from '../../actions/citiesActions';
-import searchActions from '../../actions/searchActions';
+import { setSearchCity, setSearchCountry } from '../../actions/searchActions';
 import { APP_TITLE, HOME, MAPS, SEARCH_CITY_PH, SEARCH_LABEL, SEARCH_COUNTRY_PH} from "../../constants/texts";
 import './header.scss';
 
@@ -11,15 +11,15 @@ class Header extends React.Component {
 
     handleOnChangeCountry = (evt) => {
         const { target : { value } } = evt;
-        const { searchActions } = this.props;
+        const { searchCountry } = this.props;
         console.log(value);
-        searchActions.setSearchCountry(value);
+        searchCountry(value);
     }
 
     handleOnChangeCity = (evt) => {
         const { target : { value } } = evt;
-        const { searchActions } = this.props;
-        searchActions.setSearchCity(value);
+        const { searchCity } = this.props;
+        searchCity(value);
     }
 
     handleOnClickSearch = () => {
@@ -61,11 +61,15 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    citiesActions: bindActionCreators(citiesActions, dispatch),
-    searchActions: bindActionCreators(searchActions, dispatch)
+    //citiesActions: bindActionCreators(citiesActions, dispatch),
+    searchCity: setSearchCity,
+    searchCountry: setSearchCountry
 })
   
 export default connect(
     mapStateToProps,
-   mapDispatchToProps,
+   {
+    searchCity: setSearchCity,
+    searchCountry: setSearchCountry
+   }
 )(Header)
