@@ -1,18 +1,38 @@
 import React from 'react';
-//import classNames from 'classNames'
+import classNames from 'classnames'
 
 const CustomInput = (props) => {
 
-    const inputClass = classNames(`${props.className} input-text-default`,
-    {'input-error' : props.error});
+    const buildErrorMessage = (message, inputClass) => {
+        return (
+            <div className={`${inputClass}__error input-text-default__error`}>
+                {message}
+            </div>
+        );
+    }
+
+    const inputClass = classNames(`${props.className} input-text-default`,{
+        'input-error' : props.error
+    });
+
+    const errorMessage = props.error ? buildErrorMessage(props.errorMessage, inputClass) : null;
 
     const inputProps = {
-      ...props,
-      className: inputClass
+        ...props,
+        className: inputClass
     }
 
     return (
-        <input {...inputProps}/>
+        <div>
+            <input {...inputProps}/>
+            {errorMessage}
+        </div>
     );
 }
+
+CustomInput.defaultProps = {
+    error: true,
+    errorMessage: 'error'
+}
+
 export default CustomInput;
