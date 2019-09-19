@@ -23,10 +23,10 @@ class Header extends React.Component {
     }
 
     handleOnClickSearch = () => {
-        const { searchState, getCityRequest } = this.props;
+        const { searchState, searchCity } = this.props;
         const city = searchState.city;
         const country = searchState.country;
-        getCityRequest(city, country);
+        searchCity(city, country);
     }
 
     render() {
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => ({
 export default connect(
     mapStateToProps,
    {
-      getCityRequest: citiesActions.getCityRequest,
+      searchCity: searchActions.searchCityRequest,
       setSearchCity: searchActions.setSearchCity,
       setSearchCountry: searchActions.setSearchCountry
    }

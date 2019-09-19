@@ -1,18 +1,18 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const CustomInput = (props) => {
+const CustomInput = props => {
 
     const buildErrorMessage = (message, inputClass) => {
         return (
-            <div className={`${inputClass}__error input-text-default__error`}>
+            <div className={`${inputClass}__error-message custom-input__error-message`}>
                 {message}
             </div>
         );
     }
 
-    const inputClass = classNames(`${props.className} input-text-default`,{
-        'input-error' : props.error
+    const inputClass = classNames(`${props.className} custom-input`,{
+        'custom-input--error' : props.error
     });
 
     const errorMessage = props.error ? buildErrorMessage(props.errorMessage, inputClass) : null;
@@ -31,8 +31,8 @@ const CustomInput = (props) => {
 }
 
 CustomInput.defaultProps = {
-    error: true,
-    errorMessage: 'error'
+    error: false,
+    errorMessage: ''
 }
 
 export default CustomInput;
