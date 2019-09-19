@@ -9,18 +9,28 @@ import '../App.scss';
 class Home extends React.Component {
 
     componentDidMount(){
-        const { getCityRequest } = this.props;
-        //getCityRequest();
+        const { searchState } = this.props;
+    }
+
+    buildContent = () => {
+        const { searchState } = this.props;
+        if(searchState.isSearchingCity){
+            return <div className="app-logo"/>;
+        }
+
+        return <label>HOLA</label>;
     }
     
     render() {
-        
+
+        const content = this.buildContent();
+
         return (
             <div className="root-view">
                 <Header/>
                     <div className="root-container">
                         
-                        <label>HOLA</label>
+                        {content}
                         
                     </div>
                 <Footer/>
@@ -30,7 +40,9 @@ class Home extends React.Component {
 }
 
 export default connect(
-   null,
+   state => ({
+      searchState: state.searchReducer
+   }),
     {
       getCityRequest: citiesActions.getCityRequest
     }

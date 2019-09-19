@@ -1,9 +1,13 @@
-.input-text-default {
+.input-default {
     border: none;
     border-radius: 6px;
     height: 30px;
     outline: none;
     padding-left: 10px;
+
+    &--error {
+        border: 1px solid red;
+    }
 }
 
 .search-button {

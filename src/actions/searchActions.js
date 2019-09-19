@@ -10,7 +10,28 @@ const setSearchCity = (data = '') => ({
     payload: data
 });
 
+const searchCityRequest = (city = '', country = '') => ({
+    type: actionTypes.SEARCH_CITY_REQUEST,
+    payload: {
+      city,
+      country
+    }
+});
+
+const searchCitySuccess = (data) => ({
+    type: actionTypes.SEARCH_CITY_SUCCESS,
+    payload: data
+});
+
+const searchCityFailure = (data) => ({
+    type: actionTypes.SEARCH_CITY_FAILURE,
+    payload: data
+});
+
 export {
+    searchCityFailure,
+    searchCityRequest,
+    searchCitySuccess,
     setSearchCity,
     setSearchCountry
 }

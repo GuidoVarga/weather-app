@@ -7,14 +7,14 @@ import Root from './routes/index';
 import AppReducer from './reducers/index';
 import App from './App';
 import createSagaMiddleware from 'redux-saga';
-import citiesSaga from './sagas/citiesSaga';
+import searchSaga from './sagas/searchSaga';
 
 //let store = createStore(AppReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(AppReducer, /* preloadedState, */ composeEnhancers(applyMiddleware(sagaMiddleware)));
-sagaMiddleware.run(citiesSaga);
+sagaMiddleware.run(searchSaga);
 
 ReactDOM.render(
       <Root store={store}/>,

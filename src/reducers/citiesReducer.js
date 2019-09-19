@@ -11,18 +11,8 @@ const initialState = {
 
 function citiesReducer (state = initialState, action){
     switch(action.type){
-        case actionTypes.GET_CITY_REQUEST:
+        case actionTypes.SEARCH_CITY_SUCCESS:
             return Object.assign({}, state, {
-                isFetching: true,
-                fetchingFailure: false,
-                fetchingSuccess: false,
-                hasFetched: false
-            });
-        case actionTypes.GET_CITY_SUCCESS:
-            return Object.assign({}, state, {
-                isFetching: false,
-                hasFetched: true,
-                fetchingSuccess: true,
                 city: action.payload
             })
         default:
