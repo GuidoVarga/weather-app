@@ -9,14 +9,10 @@ import '../App.scss';
 
 class Home extends React.Component {
 
-    componentDidMount(){
-        const { searchState } = this.props;
-    }
-
     buildContent = () => {
         const { searchState } = this.props;
         if(searchState.isSearchingCity){
-            return <LoadingComponent/>;
+            return <div className="loader-container"><LoadingComponent/></div>;
         }
 
         return <label>HOLA</label>;

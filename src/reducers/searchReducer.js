@@ -4,7 +4,7 @@ const initialState = {
     city : '',
     country: '',
     countryCode: '',
-    isSearchingCity: false,
+    isSearchingCity: true,
     searchingCitySuccess: false,
     searchingCityFailure: false,
     hasSearchedCity: false

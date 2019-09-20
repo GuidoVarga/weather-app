@@ -42,6 +42,12 @@ html {
     }
 }
 
+.loader-container {
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+}
+
 @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

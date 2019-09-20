@@ -1,0 +1,18 @@
+.icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    &-sun {
+        background-image: url('../resources/icons/sun.svg');
+    }
+
+    &-cloud {
+        background-image: url('../resources/icons/clouds.svg');
+    }
+
+    &-moonrise {
+        background-image: url('../resources/icons/moonrise.svg');
+    }
+}
