@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import LoadingComponent from '../components/loadingComponent/loadingComponent';
 import * as citiesActions from '../actions/citiesActions';
 import '../App.scss';
 
@@ -15,7 +16,7 @@ class Home extends React.Component {
     buildContent = () => {
         const { searchState } = this.props;
         if(searchState.isSearchingCity){
-            return <div className="app-logo"/>;
+            return <LoadingComponent/>;
         }
 
         return <label>HOLA</label>;
