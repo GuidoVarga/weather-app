@@ -1,15 +1,35 @@
 .loading-component {
-    //;
-    //background-image: url('../../resources/images/nubes.jpg');
-    display: flex;
-    flex: 1;
-    height: 100%;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    padding: 5px;
 
     .icon-container {
-        animation: spin infinite 3s linear;
-        align-self: flex-end;
-        height: 150px;
-        width: 150px;
+        animation: spin2 infinite 4s linear;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        top: 73%;
+        left: 9%;
+        transform: rotate(312deg);
+    }
+
+    .icon {
+      transition: opacity linear 1s;
+    }
+
+    &__half-circle {
+      animation: spin3 infinite 4s linear;
+      display: flex;
+      flex: 1;
+      height: 200%;
+      //border: 1px solid #999;
+      border-radius: 100%;
+      transform: rotate(45deg);
+
+      &--rotated {
+          transform: rotate(135deg);
+      }
     }
 }
 
@@ -26,6 +46,11 @@
 }
 
 @keyframes spin2 {
-   from { transform:rotateZ(180deg) }
-   to { transform:rotateZ(360deg) }
+   from { transform:rotate(312deg) }
+   to { transform:rotate(105deg) }
+}
+
+@keyframes spin3 {
+    from { transform: rotate(35deg) }
+    to { transform: rotate(255deg) }
 }

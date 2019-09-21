@@ -3,6 +3,7 @@
     display: inline-block;
     width: 100%;
     height: 100%;
+    transition: all 1s linear;
 
     &-sun {
         background-image: url('../resources/icons/sun.svg');
