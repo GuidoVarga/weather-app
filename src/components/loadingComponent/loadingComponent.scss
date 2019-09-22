@@ -1,56 +1,66 @@
 .loading-component {
-    width: 100%;
     height: 50%;
     overflow: hidden;
     padding: 5px;
+    width: 100%;
 
     .icon-container {
-        animation: spin2 infinite 4s linear;
-        position: absolute;
-        height: 50px;
-        width: 50px;
-        top: 73%;
+        animation: rotate-icon infinite 4.5s linear;
+        height: 70px;
         left: 9%;
+        position: absolute;
+        top: 73%;
         transform: rotate(312deg);
-    }
+        width: 70px;
 
-    .icon {
-      transition: opacity linear 1s;
+        .icon {
+            transition: all 0.5s cubic-bezier(0.51, 0.1, 0.46, 1.22);
+        }
     }
 
     &__half-circle {
-      animation: spin3 infinite 4s linear;
-      display: flex;
-      flex: 1;
-      height: 200%;
-      //border: 1px solid #999;
-      border-radius: 100%;
-      transform: rotate(45deg);
+        animation: rotate-container infinite 4.5s linear;
+        border: 1px solid #999;
+        border-radius: 100%;
+        display: flex;
+        flex: 1;
+        height: 200%;
+    }
 
-      &--rotated {
-          transform: rotate(135deg);
-      }
+    &__text {
+        font-size: 45px;
+        position: absolute;
+        top: 71%;
+        right: 45%;
+    }
+
+    &--xs {
+
+    }
+
+    &--s {
+
+    }
+
+    &--m {
+
+    }
+
+    &--l {
+
+    }
+
+    &--xl {
+
     }
 }
 
-@keyframes spin {
-    0% {
-      transform: translate(0,0);
-    }
-    50% {
-      transform: translate(400px, -250px);
-    }
-    100% {
-      transform: translate(800px, 0);
-    }
-}
-
-@keyframes spin2 {
+@keyframes rotate-icon {
    from { transform:rotate(312deg) }
-   to { transform:rotate(105deg) }
+   to { transform:rotate(110deg) }
 }
 
-@keyframes spin3 {
+@keyframes rotate-container  {
     from { transform: rotate(35deg) }
     to { transform: rotate(255deg) }
 }
