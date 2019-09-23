@@ -6,7 +6,7 @@
     position: relative;
 
     .icon-container {
-        animation: rotate-icon infinite 4.5s linear;
+        animation: rotate-icon infinite 5s linear;
         height: 70px;
         left: 12%;
         position: absolute;
@@ -29,10 +29,18 @@
             height: 200%;
             left: 0;
             position: absolute;
-            transition: all 0.5s cubic-bezier(0.51, 0.1, 0.46, 1.22);
+            transition: all 1s cubic-bezier(0.51, 0.1, 0.46, 1.22);
             top: 0;
             width: 100%;
             z-index: 1;
+
+            &--sky-dawn {
+                background-image: url('../../resources/images/sky-dawn.jpg');
+            }
+
+            &--sky-morning {
+                background-image: url('../../resources/images/sky-morning.jpg');
+            }
 
             &--sky-day {
                 background-image: url('../../resources/images/sky-day.jpg');
@@ -44,11 +52,12 @@
 
             &--sky-night {
                 background-image: url('../../resources/images/sky-night.jpg');
+               // background-position: 0 -70px;
             }
         }
 
         &__spin {
-            animation: rotate-container infinite 4.5s linear;
+            animation: rotate-container infinite 5s linear;
             position: relative;
             z-index: 10;
         }

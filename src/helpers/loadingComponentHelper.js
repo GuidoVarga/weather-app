@@ -35,11 +35,6 @@ const icons = {
       "background": "sky-evening",
       "icons":[
         "moonrise",
-        "moon-and-rain",
-        "moon-and-snow",
-        "moon-and-storm",
-        "moon-and-fog",
-        "moon-and-clouds"
       ]
     },
     "end-day": {
@@ -54,6 +49,17 @@ const icons = {
       ]
     }
 }
+
+const backgrounds = [
+    'sky-dawn',
+    'sky-dawn',
+    'sky-day',
+    'sky-day',
+    'sky-evening',
+    'sky-evening',
+    'sky-night',
+    'sky-night',
+];
 
 const getDayPhase = (number) => {
     switch(number){
@@ -90,8 +96,7 @@ const getRandomIcon = (number, prevIcon) => {
 }
 
 const getBackground = (counter) => {
-    const phase = getDayPhase(counter);
-    const background = icons[phase]["background"];
+    const background = backgrounds[counter];
     return background;
 }
 

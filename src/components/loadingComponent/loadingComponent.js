@@ -11,7 +11,7 @@ class LoadingComponent extends React.PureComponent {
             icon: "",
             counter: 1,
             counterAnimation: 1,
-            background: 'sky-day',
+            background: 'sky-dawn',
             interval: null,
             intervalAnimation: null,
             animation: false
@@ -43,27 +43,23 @@ class LoadingComponent extends React.PureComponent {
                 this.setState({counter: 1});
             }
             this.changeIcon();
-            this.changeBackground();
-        }, 740);
+        }, 823);
 
         this.setState({interval});
     }
-    
     createIntervalAnimation = () => {
         const intervalAnimation = setInterval(() => {
-            console.log(this.state.counterAnimation);
-            
             this.setState(prevState => {
-
-                if(prevState.counterAnimation <4){
-
-                  return {counterAnimation: prevState.counterAnimation+1}
+                if(prevState.counterAnimation < 8){
+                    this.changeBackground(prevState.counterAnimation+1);
+                    return {counterAnimation: prevState.counterAnimation+1}
                 }
                 else {
-                  return {counterAnimation: 1}
+                    this.changeBackground(1);
+                    return {counterAnimation: 1}
                 }
             });
-        }, 1000);
+        }, 611);
 
         this.setState({intervalAnimation});
     }
@@ -74,12 +70,10 @@ class LoadingComponent extends React.PureComponent {
         this.setState({icon: newIcon});
     }
 
-    changeBackground = () => {
-        const { counter, icon } = this.state;
-        const background = getBackground(counter);
+    changeBackground = (counter) => {
+        const background = getBackground(counter-1);
         this.setState({background})
     }
-
 
     render() {
         const { icon, background, animated } = this.state;
