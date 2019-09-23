@@ -1,5 +1,5 @@
 import React from 'react';
-import { getRandomIcon } from '../../helpers/loadingComponentHelper';
+import { getRandomIcon, getBackground} from '../../helpers/loadingComponentHelper';
 import './loadingComponent.scss';
 
 class LoadingComponent extends React.PureComponent {
@@ -9,6 +9,7 @@ class LoadingComponent extends React.PureComponent {
         this.state = {
             icon: "",
             counter: 1,
+            background: 'sky-day',
             interval: null
         }
     }
@@ -34,6 +35,7 @@ class LoadingComponent extends React.PureComponent {
                 this.setState({counter: 1});
             }
             this.changeIcon();
+            this.changeBackground();
         }, 740);
 
         this.setState({interval});
@@ -45,19 +47,26 @@ class LoadingComponent extends React.PureComponent {
         this.setState({icon: newIcon});
     }
 
+    changeBackground = () => {
+        const { counter, icon } = this.state;
+        const background = getBackground(counter);
+        this.setState({background})
+    }
+
 
     render() {
-        const icon = this.state.icon;
+        const { icon, background } = this.state;
         return (
             <div className="loading-component">
                 <div className="loading-component__text">
                     LOADING
                 </div>
-                <div className="loading-component__half-circle">
+                <div className="half-circle half-circle__spin">
                     <div className="icon-container">
                         <i className={`icon icon-${icon}`}/>
                     </div>
                 </div>
+                <div className={`half-circle half-circle__background half-circle__background--${background}`}/>
             </div>
         )
     }

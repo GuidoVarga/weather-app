@@ -3,13 +3,14 @@
     overflow: hidden;
     padding: 5px;
     width: 100%;
+    position: relative;
 
     .icon-container {
         animation: rotate-icon infinite 4.5s linear;
         height: 70px;
-        left: 9%;
+        left: 12%;
         position: absolute;
-        top: 73%;
+        top: 70%;
         transform: rotate(312deg);
         width: 70px;
 
@@ -18,13 +19,39 @@
         }
     }
 
-    &__half-circle {
-        animation: rotate-container infinite 4.5s linear;
-        border: 1px solid #999;
+    .half-circle {
         border-radius: 100%;
         display: flex;
         flex: 1;
         height: 200%;
+
+        &__background {
+            height: 200%;
+            left: 0;
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.51, 0.1, 0.46, 1.22);
+            top: 0;
+            width: 100%;
+            z-index: 1;
+
+            &--sky-day {
+                background-image: url('../../resources/images/sky-day.jpg');
+            }
+
+            &--sky-evening {
+                background-image: url('../../resources/images/sky-evening.jpg')
+            }
+
+            &--sky-night {
+                background-image: url('../../resources/images/sky-night.jpg');
+            }
+        }
+
+        &__spin {
+            animation: rotate-container infinite 4.5s linear;
+            position: relative;
+            z-index: 10;
+        }
     }
 
     &__text {
@@ -32,6 +59,7 @@
         position: absolute;
         top: 71%;
         right: 45%;
+        display: none;
     }
 
     &--xs {

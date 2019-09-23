@@ -1,8 +1,8 @@
 .icon {
     background-repeat: no-repeat;
     display: inline-block;
-    width: 100%;
     height: 100%;
+    width: 100%;
 
     &-sun {
         background-image: url('../resources/icons/sun.svg');
@@ -83,5 +83,4 @@
     &-storm {
         background-image: url('../resources/icons/storm.svg');
     }
-
 }

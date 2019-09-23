@@ -1,43 +1,58 @@
 const icons = {
-    "start-day": [
-        "sun-morning",
-        "sun-and-wind",
-        "sun-and-fog",
-        "sun-and-clouds",
-        "sun-and-rain",
-    ],
-    "day" : [
-        "sun",
-        "sun-and-wind",
-        "sun-and-fog",
-        "sun-and-clouds",
-        "sun-and-rain",
-    ],
-    "mid-day": [
-        "sun-evening",
-        "clouds",
-        "rain",
-        "snow",
-        "wind",
-        "storm",
-        "heavy-rain"
-    ],
-    "start-end-day":[
+    "start-day": {
+        "background": "sky-day",
+        "icons":[
+            "sun-morning",
+            "sun-and-wind",
+            "sun-and-fog",
+            "sun-and-clouds",
+            "sun-and-rain",
+        ]
+    },
+    "day" : {
+        "background": "sky-day",
+        "icons":[
+            "sun",
+            "sun-and-wind",
+            "sun-and-fog",
+            "sun-and-clouds",
+            "sun-and-rain",
+        ]
+    },
+    "mid-day": {
+        "background": "sky-day",
+        "icons":[
+            "sun-evening",
+            "clouds",
+            "rain",
+            "snow",
+            "wind",
+            "storm",
+            "heavy-rain"
+        ]
+    },
+    "start-end-day": {
+      "background": "sky-evening",
+      "icons":[
         "moonrise",
         "moon-and-rain",
         "moon-and-snow",
         "moon-and-storm",
         "moon-and-fog",
         "moon-and-clouds"
-    ],
-    "end-day": [
+      ]
+    },
+    "end-day": {
+    "background": "sky-night",
+      "icons":[
         "moonset",
         "moon-and-rain",
         "moon-and-snow",
         "moon-and-storm",
         "moon-and-fog",
         "moon-and-clouds"
-    ]
+      ]
+    }
 }
 
 const getDayPhase = (number) => {
@@ -59,8 +74,8 @@ const getDayPhase = (number) => {
 }
 
 const getNewIcon = (phase, prevIcon) => {
-    const index = Math.floor((Math.random() * (icons[phase].length -1)) + 0);
-    const newIcon = icons[phase][index];
+    const index = Math.floor((Math.random() * (icons[phase]["icons"].length -1)) + 0);
+    const newIcon = icons[phase]["icons"][index];
 
     if(newIcon === prevIcon){
         return getNewIcon(phase, prevIcon);
@@ -74,7 +89,15 @@ const getRandomIcon = (number, prevIcon) => {
     return getNewIcon(phase, prevIcon);
 }
 
+const getBackground = (counter) => {
+    const phase = getDayPhase(counter);
+    const background = icons[phase]["background"];
+    console.log(background);
+    return background;
+}
+
 export {
     icons,
-    getRandomIcon
+    getRandomIcon,
+    getBackground
 }
