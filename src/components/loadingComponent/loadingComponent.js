@@ -1,5 +1,6 @@
 import React from 'react';
 import { getRandomIcon, getBackground} from '../../helpers/loadingComponentHelper';
+import PropTypes from 'prop-types';
 import classNames from 'classnames'
 import './loadingComponent.scss';
 
@@ -30,6 +31,8 @@ class LoadingComponent extends React.PureComponent {
 
     componentWillUnmount() {
         clearInterval(this.state.interval);
+        clearInterval(this.state.intervalAnimation);
+        console.log('unmount')
     }
 
     createInterval = () => {
@@ -47,6 +50,7 @@ class LoadingComponent extends React.PureComponent {
 
         this.setState({interval});
     }
+
     createIntervalAnimation = () => {
         const intervalAnimation = setInterval(() => {
             this.setState(prevState => {
@@ -77,25 +81,35 @@ class LoadingComponent extends React.PureComponent {
 
     render() {
         const { icon, background, animated } = this.state;
+        const { size } = this.props;
+
+        const loadingClass = classNames(`loading-component loading-component--${size}`);
 
         const halfCircleClass = classNames('half-circle', {
             'half-circle__spin': animated
         });
 
         return (
-            <div className="loading-component">
-                <div className="loading-component__text">
-                    LOADING
-                </div>
-                <div className={halfCircleClass}>
-                    <div className="icon-container">
-                        <i className={`icon icon-${icon}`}/>
-                    </div>
-                </div>
-                <div className={`half-circle half-circle__background half-circle__background--${background}`}/>
-            </div>
+          <div className={loadingClass}>
+              <div className="loading-component__container">
+                  <div className={halfCircleClass}>
+                      <div className="icon-container">
+                          <i className={`icon icon-${icon}`}/>
+                      </div>
+                  </div>
+                  <div className={`half-circle half-circle__background half-circle__background--${background}`}/>
+              </div>
+          </div>
         )
     }
-
 }
+
+LoadingComponent.propTypes = {
+    size: PropTypes.oneOf(['block', 'xs', 's', 'm', 'l', 'xl'])
+}
+
+LoadingComponent.defaultProps = {
+    size: 'block'
+}
+
 export default LoadingComponent;

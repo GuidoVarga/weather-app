@@ -1,45 +1,31 @@
 const icons = {
-    "start-day": {
-        "background": "sky-day",
-        "icons":[
-            "sun-morning",
-            "sun-and-wind",
-            "sun-and-fog",
-            "sun-and-clouds",
-            "sun-and-rain",
-        ]
-    },
-    "day" : {
-        "background": "sky-day",
-        "icons":[
-            "sun",
-            "sun-and-wind",
-            "sun-and-fog",
-            "sun-and-clouds",
-            "sun-and-rain",
-        ]
-    },
-    "mid-day": {
-        "background": "sky-day",
-        "icons":[
-            "sun-evening",
-            "clouds",
-            "rain",
-            "snow",
-            "wind",
-            "storm",
-            "heavy-rain"
-        ]
-    },
-    "start-end-day": {
-      "background": "sky-evening",
-      "icons":[
+    "start-day":[
+        "sun-morning",
+        "sun-and-wind",
+        "sun-and-fog",
+        "sun-and-clouds",
+        "sun-and-rain",
+    ],
+    "day" : [
+        "sun",
+        "sun-and-wind",
+        "sun-and-fog",
+        "sun-and-clouds",
+        "sun-and-rain",
+    ],
+    "mid-day": [
+        "sun-evening",
+        "clouds",
+        "rain",
+        "snow",
+        "wind",
+        "storm",
+        "heavy-rain"
+    ],
+    "start-end-day":[
         "moonrise",
-      ]
-    },
-    "end-day": {
-    "background": "sky-night",
-      "icons":[
+    ],
+    "end-day": [
         "moonset",
         "moon-and-rain",
         "moon-and-snow",
@@ -47,7 +33,6 @@ const icons = {
         "moon-and-fog",
         "moon-and-clouds"
       ]
-    }
 }
 
 const backgrounds = [
@@ -80,8 +65,8 @@ const getDayPhase = (number) => {
 }
 
 const getNewIcon = (phase, prevIcon) => {
-    const index = Math.floor((Math.random() * (icons[phase]["icons"].length -1)) + 0);
-    const newIcon = icons[phase]["icons"][index];
+    const index = Math.floor((Math.random() * (icons[phase].length -1)) + 0);
+    const newIcon = icons[phase][index];
 
     if(newIcon === prevIcon){
         return getNewIcon(phase, prevIcon);

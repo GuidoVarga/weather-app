@@ -1,9 +1,15 @@
 .loading-component {
-    height: 50%;
-    overflow: hidden;
-    padding: 5px;
-    width: 100%;
-    position: relative;
+
+    max-height: 800px;
+    max-width: 800px;
+    
+    &__container {
+        height: 50%;
+        overflow: hidden;
+        padding: 5px;
+        width: 100%;
+        position: relative;
+    }
 
     .icon-container {
         animation: rotate-icon infinite 5s linear;
@@ -26,6 +32,7 @@
         height: 200%;
 
         &__background {
+            background-size: cover;
             height: 200%;
             left: 0;
             position: absolute;
@@ -35,11 +42,15 @@
             z-index: 1;
 
             &--sky-dawn {
-                background-image: url('../../resources/images/sky-dawn.jpg');
+                background-image: url('../../resources/images/sky_dawn.jpg');
             }
 
             &--sky-morning {
                 background-image: url('../../resources/images/sky-morning.jpg');
+            }
+
+            &--sky-morning-2 {
+                background-image: url('../../resources/images/sky-morning-2.jpg');
             }
 
             &--sky-day {
@@ -52,7 +63,6 @@
 
             &--sky-night {
                 background-image: url('../../resources/images/sky-night.jpg');
-               // background-position: 0 -70px;
             }
         }
 
@@ -71,24 +81,39 @@
         display: none;
     }
 
-    &--xs {
+    &--block {
+        height: 100%;
+        width: 100%;
+    }
 
+    &--xs {
+        height: 200px;
+        width: 200px;
+
+        .icon-container {
+            height: 50px;
+            width: 50px;
+        }
     }
 
     &--s {
-
+        height: 300px;
+        width: 300px;
     }
 
     &--m {
-
+        height: 400px;
+        width: 400px;
     }
 
     &--l {
-
+        height: 500px;
+        width: 500px;
     }
 
     &--xl {
-
+        height: 600px;
+        width: 600px;
     }
 }
 
