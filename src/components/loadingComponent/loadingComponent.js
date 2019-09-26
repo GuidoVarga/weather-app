@@ -32,7 +32,6 @@ class LoadingComponent extends React.PureComponent {
     componentWillUnmount() {
         clearInterval(this.state.interval);
         clearInterval(this.state.intervalAnimation);
-        console.log('unmount')
     }
 
     createInterval = () => {
