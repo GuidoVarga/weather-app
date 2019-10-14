@@ -39,7 +39,14 @@ html {
         height: 70%;
         margin: 0 10% 36px;
         width: auto;
+        padding-top: 150px;
     }
+}
+
+.loader-container {
+    height: 400px;
+	width: 400px;
+    margin: 0 auto;
 }
 
 @keyframes App-logo-spin {

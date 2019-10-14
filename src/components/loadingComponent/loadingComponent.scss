@@ -1,0 +1,128 @@
+.loading-component {
+
+    max-height: 800px;
+    max-width: 800px;
+    
+    &__container {
+        height: 50%;
+        overflow: hidden;
+        padding: 5px;
+        width: 100%;
+        position: relative;
+    }
+
+    .icon-container {
+        animation: rotate-icon infinite 5s linear;
+        height: 70px;
+        left: 12%;
+        position: absolute;
+        top: 70%;
+        transform: rotate(312deg);
+        width: 70px;
+
+        .icon {
+            transition: all 0.5s cubic-bezier(0.51, 0.1, 0.46, 1.22);
+        }
+    }
+
+    .half-circle {
+        border-radius: 100%;
+        display: flex;
+        flex: 1;
+        height: 200%;
+
+        &__background {
+            background-size: cover;
+            height: 200%;
+            left: 0;
+            position: absolute;
+            transition: all 1s cubic-bezier(0.51, 0.1, 0.46, 1.22);
+            top: 0;
+            width: 100%;
+            z-index: 1;
+
+            &--sky-dawn {
+                background-image: url('../../resources/images/sky_dawn.jpg');
+            }
+
+            &--sky-morning {
+                background-image: url('../../resources/images/sky-morning.jpg');
+            }
+
+            &--sky-morning-2 {
+                background-image: url('../../resources/images/sky-morning-2.jpg');
+            }
+
+            &--sky-day {
+                background-image: url('../../resources/images/sky-day.jpg');
+            }
+
+            &--sky-evening {
+                background-image: url('../../resources/images/sky-evening.jpg')
+            }
+
+            &--sky-night {
+                background-image: url('../../resources/images/sky-night.jpg');
+            }
+        }
+
+        &__spin {
+            animation: rotate-container infinite 5s linear;
+            position: relative;
+            z-index: 10;
+        }
+    }
+
+    &__text {
+        font-size: 45px;
+        position: absolute;
+        top: 71%;
+        right: 45%;
+        display: none;
+    }
+
+    &--block {
+        height: 100%;
+        width: 100%;
+    }
+
+    &--xs {
+        height: 200px;
+        width: 200px;
+
+        .icon-container {
+            height: 50px;
+            width: 50px;
+        }
+    }
+
+    &--s {
+        height: 300px;
+        width: 300px;
+    }
+
+    &--m {
+        height: 400px;
+        width: 400px;
+    }
+
+    &--l {
+        height: 500px;
+        width: 500px;
+    }
+
+    &--xl {
+        height: 600px;
+        width: 600px;
+    }
+}
+
+@keyframes rotate-icon {
+   from { transform:rotate(312deg) }
+   to { transform:rotate(110deg) }
+}
+
+@keyframes rotate-container  {
+    from { transform: rotate(35deg) }
+    to { transform: rotate(255deg) }
+}
