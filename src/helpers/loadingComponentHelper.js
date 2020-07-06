@@ -77,7 +77,9 @@ const getNewIcon = (phase, prevIcon) => {
 
 const getRandomIcon = (number, prevIcon) => {
     const phase = getDayPhase(number);
-    return getNewIcon(phase, prevIcon);
+    const newIcon = getNewIcon(phase, prevIcon);
+    console.log(newIcon);
+    return newIcon;
 }
 
 const getBackground = (counter) => {

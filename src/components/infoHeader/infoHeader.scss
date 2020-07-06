@@ -1,0 +1,74 @@
+.info-header {
+
+  &__info-container {
+    background-image: url('../../assets/images/london.jpg');
+    background-repeat: round;
+    display: flex;
+    height: 420px;
+    width: 100%;
+
+    &-half {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      &--left {
+        padding-left: 115px;
+      }
+
+      &--right {
+        align-items: flex-end;
+        padding-right: 150px;
+      }
+    }
+  }
+
+  &__row {
+
+    color: white;
+
+    &--left {
+      padding-left: 5px;
+    }
+    
+    &--right {
+
+    }
+
+    &-hour {
+      flex: 3;
+      font-size: 20px;
+    }
+
+    &-temp {
+      flex: 6;
+      font-size: 5rem;
+      padding-left: 0;
+    }
+
+    &-pressure {
+      flex: 2;
+      font-size: 20px;
+    }
+
+    &-humidity {
+      flex: 2;
+      font-size: 20px;
+    }
+
+    &-weather {
+      flex: 6;
+
+      &__icon-container {
+        height: 250px;
+        width: 250px;
+      }
+    }
+
+    &-max-min-temp {
+      flex: 4;
+      font-size: 5rem;
+    }
+  }
+
+}
