@@ -1,7 +1,7 @@
 import reducer from './searchReducer';
 import * as actionTypes from '../actions/searchActions';
 
-describea('search reducer tests', () => {
+describe('search reducer tests', () => {
 
   it('should return initial state', () => {
       const initalState = {
