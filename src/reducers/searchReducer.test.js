@@ -1,20 +1,19 @@
 import reducer from './searchReducer';
-import * as actionTypes from '../actions/searchActions';
+import actionTypes from '../constants/actionTypes';
+import * as mocks from './mocks/searchReducerMocks';
 
 describe('search reducer tests', () => {
 
   it('should return initial state', () => {
-      const initalState = {
-          city : '',
-          country: '',
-          countryCode: '',
-          isSearchingCity: false,
-          searchingCitySuccess: false,
-          searchingCityFailure: false,
-          hasSearchedCity: false
-      };
+      expect(reducer(undefined, {})).toEqual(mocks.initalState);
+  });
 
-      expect(reducer(undefined, {})).toEqual(initalState);
+  it('should handle SET_SEARCH_CITY', () => {
+    const action = {
+      type: actionTypes.SET_SEARCH_CITY,
+      payload: 'London'
+    };
+    expect(reducer(undefined, action)).toEqual(mocks.setSearchCityMock);
   });
 
 });
