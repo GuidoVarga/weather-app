@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
-import * as citiesActions from '../../actions/citiesActions';
 import * as searchActions from '../../actions/searchActions';
+import * as mapsActions from '../../actions/mapsActions';
 import { APP_TITLE, HOME, MAPS, SEARCH_CITY_PH, SEARCH_LABEL, SEARCH_COUNTRY_PH} from "../../constants/texts";
 import CustomInput from '../customInput/customInput';
 import './header.scss';
@@ -23,10 +23,13 @@ class Header extends React.Component {
     }
 
     handleOnClickSearch = () => {
-        const { searchState, searchCity } = this.props;
-        const city = searchState.city;
-        const country = searchState.country;
-        searchCity(city, country);
+        const { searchState : {city, country}, searchAction } = this.props;
+        searchAction(city, country);
+    }
+
+    handleOnClickSearch2 = () => {
+        const { searchState : {city, country}, fetchMap} = this.props;
+        fetchMap(city, country);
     }
 
     render() {
@@ -49,6 +52,8 @@ class Header extends React.Component {
                             <label className="header__bar-container__search-bar__city-label">City:</label>
                             <CustomInput type="text" placeholder={SEARCH_CITY_PH}  className="header__bar-container__search-bar__input" onChange={this.handleOnChangeCity}/>
                             <button className="search-button" onClick={this.handleOnClickSearch}>{SEARCH_LABEL}</button>
+                            <button className="search-button" onClick={this.handleOnClickSearch2}>{SEARCH_LABEL}</button>
+                            <button className="search-button" onClick={() => this.props.fetchMapCancelRequest()}>{'CANCEL'}</button>
                         </div>
                     </div>
                 </div>
@@ -64,8 +69,9 @@ const mapStateToProps = (state) => ({
 export default connect(
     mapStateToProps,
    {
-      searchCity: searchActions.searchCityRequest,
-      setSearchCity: searchActions.setSearchCity,
-      setSearchCountry: searchActions.setSearchCountry
+    fetchMap: mapsActions.fetchMapRequest,
+    setSearchCity: searchActions.setSearchCity,
+    setSearchCountry: searchActions.setSearchCountry,
+    fetchMapCancelRequest: mapsActions.fetchMapCancelRequest
    }
 )(Header)
