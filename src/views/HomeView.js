@@ -8,21 +8,22 @@ import InfoHeader from '../components/infoHeader/infoHeader';
 import * as citiesActions from '../actions/citiesActions';
 import '../App.scss';
 
-const buildContent = ({ searchState }) => {
+const buildContent = ({ citiesState }) => {
   switch(true){
-    case searchState.isSearchingCity:
+    case citiesState.isFetchingCity:
       return <div className="loader-container"><LoadingComponent/></div>;
-    case searchState.searchingCitySuccess:
-      return <InfoHeader/>
+    case citiesState.fetchCitySuccess:
+      return <InfoHeader/>;
+    default:
+      return <label></label>;
   }
-  return <label></label>;
 }
 
 const Home = (props) => {
     const content = buildContent(props);
     return (
         <div className="root-view">
-            <Header/>
+            <Header searchAction = {props.fetchCityRequest}/>
                 <div className="root-container">
                     {content}
                 </div>
@@ -33,9 +34,9 @@ const Home = (props) => {
 
 export default connect(
    state => ({
-      searchState: state.searchReducer
+      citiesState: state.citiesReducer
    }),
     {
-      getCityRequest: citiesActions.getCityRequest
+      fetchCityRequest: citiesActions.fetchCityRequest
     }
 )(Home)

@@ -3,7 +3,7 @@ import { getRandomIcon, getBackground} from '../../helpers/loadingComponentHelpe
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
 import './loadingComponent.scss';
-
+/*
 const LoadingComponent = ({size}) => {
   const [icon, setIcon] = useState('');
   const [counter, setCounter] = useState(1);
@@ -92,8 +92,8 @@ const LoadingComponent = ({size}) => {
       </div>
     );
 };
-
-class LoadingComponents extends React.PureComponent {
+*/
+class LoadingComponent extends React.PureComponent {
 
     constructor(props){
         super(props);
